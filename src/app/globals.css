@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0f;
+  --color-surface: #12121a;
+  --color-surface-elevated: #1a1a26;
+  --color-border: #2a2a3d;
+  --color-border-subtle: #1f1f2e;
+  --color-foreground: #f4f4f8;
+  --color-muted: #9494a8;
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-blue-soft: #1e3a5f;
+  --color-accent-purple-soft: #2d1f4e;
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent-purple) 40%, transparent);
+  color: var(--color-foreground);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, color-mix(in srgb, var(--color-accent-blue) 25%, transparent), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 0%, color-mix(in srgb, var(--color-accent-purple) 20%, transparent), transparent);
+}
+
+.card-glow {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-accent-blue) 8%, transparent),
+    color-mix(in srgb, var(--color-accent-purple) 8%, transparent)
+  );
+}
