@@ -45,6 +45,7 @@ export const tools: Tool[] = [
     description: "Extract audio tracks from video files as MP3 downloads.",
     category: "video",
     slug: "video-to-mp3",
+    available: true,
   },
   {
     id: "video-trimmer",

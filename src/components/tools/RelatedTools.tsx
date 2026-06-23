@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { RelatedToolRef } from "@/lib/tools/tool-data";
+import { getToolConfig } from "@/lib/tools/tool-data";
 import { Badge } from "@/components/ui/Badge";
 
 interface RelatedToolsProps {
@@ -14,21 +15,25 @@ export function RelatedTools({ tools }: RelatedToolsProps) {
       </h2>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        {tools.map((tool) => (
-          <Link
-            key={tool.slug}
-            href={`/tools/${tool.slug}`}
-            className="group rounded-2xl border border-border bg-surface p-5 transition-all hover:border-accent-blue/40 hover:shadow-lg hover:shadow-accent-blue/5"
-          >
-            <div className="mb-2 flex items-start justify-between gap-3">
-              <h3 className="text-sm font-semibold text-foreground group-hover:text-accent-blue">
-                {tool.name}
-              </h3>
-              <Badge variant="accent">Coming Soon</Badge>
-            </div>
-            <p className="text-sm leading-relaxed text-muted">{tool.shortDescription}</p>
-          </Link>
-        ))}
+        {tools.map((tool) => {
+          const isAvailable = getToolConfig(tool.slug)?.available ?? false;
+
+          return (
+            <Link
+              key={tool.slug}
+              href={`/tools/${tool.slug}`}
+              className="group rounded-2xl border border-border bg-surface p-5 transition-all hover:border-accent-blue/40 hover:shadow-lg hover:shadow-accent-blue/5"
+            >
+              <div className="mb-2 flex items-start justify-between gap-3">
+                <h3 className="text-sm font-semibold text-foreground group-hover:text-accent-blue">
+                  {tool.name}
+                </h3>
+                {!isAvailable && <Badge variant="accent">Coming Soon</Badge>}
+              </div>
+              <p className="text-sm leading-relaxed text-muted">{tool.shortDescription}</p>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

@@ -142,7 +142,109 @@ const wavToMp3Config: ToolConfig = {
   ],
 };
 
-export const toolConfigs: ToolConfig[] = [wavToMp3Config];
+const videoToMp3Config: ToolConfig = {
+  slug: "video-to-mp3",
+  name: "Video to MP3 Converter",
+  category: "video",
+  categoryLabel: "Video Tools",
+  shortDescription: "Extract audio tracks from video files as MP3 downloads.",
+  seoTitle: "Free Video to MP3 Converter | Vidsembly",
+  seoDescription:
+    "Extract audio from video files and convert to MP3 online for free. No sign-up required. Files are processed locally in your browser.",
+  badge: "Free",
+  route: "/tools/video-to-mp3",
+  available: true,
+  pageDescription:
+    "Extract audio from video files and save as MP3. Supports MP4, WebM, MOV, and more. Files are processed entirely in your browser — nothing is uploaded to a server.",
+  trustPoints: [
+    "Free to use",
+    "No account required",
+    "Files stay in your browser",
+    "Supports batch conversion",
+  ],
+  faqs: [
+    {
+      question: "How do I convert a video to MP3?",
+      answer:
+        "Upload one or more video files using the drop zone or file picker, then click Convert to MP3. When conversion finishes, download each MP3 individually or use Download All to get a ZIP archive.",
+    },
+    {
+      question: "Is this video to MP3 converter free?",
+      answer:
+        "Yes. This tool is completely free with no account required. There are no usage limits on the number of files you can convert.",
+    },
+    {
+      question: "Are my video files uploaded to a server?",
+      answer:
+        "No. Conversion runs locally in your browser using FFmpeg compiled to WebAssembly. Your video files never leave your device.",
+    },
+    {
+      question: "What video formats are supported?",
+      answer:
+        "Common formats including MP4, WebM, MOV, AVI, MKV, M4V, WMV, and others are supported. If a file contains an audio track, this tool can extract it as MP3.",
+    },
+    {
+      question: "Can I convert multiple videos at once?",
+      answer:
+        "Yes. Add several video files before converting. Each file is processed in sequence, and you can download the results individually or together as a ZIP file.",
+    },
+    {
+      question: "What bitrate does the MP3 output use?",
+      answer:
+        "Extracted audio is encoded at 128 kbps, which offers a good balance between file size and audio quality for most voice and music content.",
+    },
+  ],
+  infoSections: [
+    {
+      title: "Why extract audio from video?",
+      paragraphs: [
+        "Video files are often large and include visuals you may not need. Extracting the audio as MP3 gives you a lightweight file that is easy to share, embed in presentations, or use in podcasts and training materials.",
+      ],
+    },
+    {
+      title: "What video formats work best?",
+      paragraphs: [
+        "MP4 and WebM files generally convert quickly and reliably in the browser. MOV and AVI files are also supported. For best results, use videos with a clear audio track and common codecs such as AAC or MP3.",
+      ],
+    },
+    {
+      title: "When should you use MP3 instead of the original video?",
+      paragraphs: [
+        "Choose MP3 when you only need the soundtrack — for example, lecture audio, interview clips, or background music from a screen recording. Keep the original video when visuals are part of the content.",
+      ],
+    },
+    {
+      title: "Is browser-based video conversion private?",
+      paragraphs: [
+        "Yes. This converter runs entirely in your browser, so your files are not transmitted to Vidsembly or any third-party server. That makes it suitable for internal recordings, client deliverables, and other sensitive content.",
+      ],
+    },
+  ],
+  relatedTools: [
+    {
+      slug: "wav-to-mp3",
+      name: "WAV to MP3 Converter",
+      shortDescription: "Convert uncompressed WAV files to compact MP3 format.",
+    },
+    {
+      slug: "video-trimmer",
+      name: "Video Trimmer",
+      shortDescription: "Cut and trim video clips to the exact segment you need.",
+    },
+    {
+      slug: "video-merger",
+      name: "Video Merger",
+      shortDescription: "Combine multiple video clips into a single seamless file.",
+    },
+    {
+      slug: "transcript-cleaner",
+      name: "Transcript Cleaner",
+      shortDescription: "Remove filler words, timestamps, and formatting noise from transcripts.",
+    },
+  ],
+};
+
+export const toolConfigs: ToolConfig[] = [wavToMp3Config, videoToMp3Config];
 
 export const toolConfigMap: Record<string, ToolConfig> = Object.fromEntries(
   toolConfigs.map((tool) => [tool.slug, tool]),
