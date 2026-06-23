@@ -1,4 +1,4 @@
-import type { Tool, ToolCategory } from "./types";
+import type { Tool, ToolCategory, ToolCategoryId } from "./types";
 
 export const toolCategories: ToolCategory[] = [
   {
@@ -23,6 +23,13 @@ export const toolCategories: ToolCategory[] = [
   },
 ];
 
+const categoryLabels: Record<ToolCategoryId, string> = {
+  audio: "Audio Tools",
+  video: "Video Tools",
+  presentation: "Presentation Tools",
+  transcription: "Transcription Tools",
+};
+
 export const tools: Tool[] = [
   {
     id: "wav-to-mp3",
@@ -38,6 +45,20 @@ export const tools: Tool[] = [
     description: "Convert MP3 files back to high-quality WAV audio.",
     category: "audio",
     slug: "mp3-to-wav",
+  },
+  {
+    id: "audio-trimmer",
+    name: "Audio Trimmer",
+    description: "Trim audio files and remove unwanted intros, outros, or sections before exporting.",
+    category: "audio",
+    slug: "audio-trimmer",
+  },
+  {
+    id: "audio-volume-booster",
+    name: "Audio Volume Booster",
+    description: "Increase volume levels or normalize audio for clearer playback.",
+    category: "audio",
+    slug: "audio-volume-booster",
   },
   {
     id: "video-to-mp3",
@@ -62,6 +83,27 @@ export const tools: Tool[] = [
     slug: "video-merger",
   },
   {
+    id: "video-to-gif",
+    name: "Video to GIF Converter",
+    description: "Convert short video clips into high-quality GIFs for social media, presentations, and messaging.",
+    category: "video",
+    slug: "video-to-gif",
+  },
+  {
+    id: "video-aspect-ratio-cropper",
+    name: "Video Aspect Ratio Cropper",
+    description: "Crop videos for TikTok, Reels, Shorts, Instagram, and other social platforms.",
+    category: "video",
+    slug: "video-aspect-ratio-cropper",
+  },
+  {
+    id: "video-speed-controller",
+    name: "Video Speed Controller",
+    description: "Speed up or slow down videos for tutorials, demonstrations, and time-lapse content.",
+    category: "video",
+    slug: "video-speed-controller",
+  },
+  {
     id: "script-length-calculator",
     name: "Script Length Calculator",
     description: "Estimate presentation runtime from your script word count.",
@@ -74,6 +116,27 @@ export const tools: Tool[] = [
     description: "Count words and estimate speaking time for slide decks.",
     category: "presentation",
     slug: "presentation-word-count",
+  },
+  {
+    id: "teleprompter",
+    name: "Teleprompter Tool",
+    description: "Paste your script and control scrolling speed, font size, and reading experience.",
+    category: "presentation",
+    slug: "teleprompter",
+  },
+  {
+    id: "ai-prompt-helper",
+    name: "AI Prompt Helper for Scripts",
+    description: "Generate optimized AI prompts for creating video scripts and presentations.",
+    category: "presentation",
+    slug: "ai-prompt-helper",
+  },
+  {
+    id: "b-roll-planner",
+    name: "B-Roll Planner",
+    description: "Organize script lines and plan supporting visuals with an exportable shot list.",
+    category: "presentation",
+    slug: "b-roll-planner",
   },
   {
     id: "srt-to-txt",
@@ -90,9 +153,16 @@ export const tools: Tool[] = [
     slug: "txt-to-srt",
   },
   {
+    id: "srt-time-shifter",
+    name: "SRT Time Shifter",
+    description: "Adjust subtitle timing and fix synchronization issues in SRT files.",
+    category: "transcription",
+    slug: "srt-time-shifter",
+  },
+  {
     id: "transcript-cleaner",
-    name: "Transcript Cleaner",
-    description: "Remove filler words, timestamps, and formatting noise.",
+    name: "Case Converter & Transcript Cleaner",
+    description: "Clean transcript formatting, fix capitalization, and remove unwanted labels.",
     category: "transcription",
     slug: "transcript-cleaner",
   },
@@ -105,4 +175,16 @@ export const navLinks = toolCategories.map((category) => ({
 
 export function getToolsByCategory(categoryId: ToolCategory["id"]): Tool[] {
   return tools.filter((tool) => tool.category === categoryId);
+}
+
+export function getToolBySlug(slug: string): Tool | undefined {
+  return tools.find((tool) => tool.slug === slug);
+}
+
+export function getCategoryLabel(categoryId: ToolCategoryId): string {
+  return categoryLabels[categoryId];
+}
+
+export function getPlaceholderTools(): Tool[] {
+  return tools.filter((tool) => !tool.available);
 }

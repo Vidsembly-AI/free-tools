@@ -23,23 +23,16 @@ export function ToolCard({ tool }: ToolCardProps) {
           {tool.description}
         </p>
 
-        {tool.available ? (
-          <Link
-            href={toolHref}
-            className="inline-flex w-full items-center justify-center rounded-xl border border-border bg-surface-elevated px-4 py-2.5 text-sm font-medium text-foreground transition-colors group-hover:border-accent-blue/30"
-          >
-            Open Tool
-          </Link>
-        ) : (
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="inline-flex w-full items-center justify-center rounded-xl border border-border bg-surface-elevated px-4 py-2.5 text-sm font-medium text-muted transition-colors group-hover:border-accent-blue/30 group-hover:text-foreground disabled:cursor-not-allowed"
-          >
-            Open Tool
-          </button>
-        )}
+        <Link
+          href={toolHref}
+          className={`inline-flex w-full items-center justify-center rounded-xl border border-border bg-surface-elevated px-4 py-2.5 text-sm font-medium transition-colors group-hover:border-accent-blue/30 ${
+            tool.available
+              ? "text-foreground"
+              : "text-muted group-hover:text-foreground"
+          }`}
+        >
+          Open Tool
+        </Link>
       </div>
     </article>
   );
