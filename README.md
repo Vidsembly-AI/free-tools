@@ -49,17 +49,31 @@ npm run lint
 ```
 src/
 ├── app/
-│   ├── layout.tsx      # Root layout with Header & Footer
-│   ├── page.tsx        # Homepage
-│   └── globals.css     # Global styles & theme tokens
+│   ├── layout.tsx              # Root layout with Header & Footer
+│   ├── page.tsx                # Homepage
+│   ├── tools/[slug]/page.tsx   # Tool pages (use ToolPage template)
+│   └── globals.css             # Global styles & theme tokens
 ├── components/
-│   ├── home/           # Homepage sections
-│   ├── layout/         # Header, Footer
-│   └── ui/             # Reusable UI components
+│   ├── home/                   # Homepage sections
+│   ├── layout/                 # Header, Footer
+│   ├── tools/                  # Shared tool UI (ToolPage, FAQ, CTA, etc.)
+│   └── ui/                     # Reusable UI components
 └── lib/
-    ├── tools.ts        # Tool & category data
-    └── types.ts        # Shared TypeScript types
+    ├── tools/
+    │   ├── tool-data.ts        # Tool registry (SEO, FAQs, related tools)
+    │   ├── seo.ts              # Metadata helpers
+    │   └── schema.ts           # JSON-LD helpers
+    ├── tools.ts                # Homepage tool listings
+    └── types.ts                # Shared TypeScript types
 ```
+
+## Adding a New Tool
+
+1. Register the tool in `src/lib/tools/tool-data.ts`
+2. Build the converter component in `src/components/tools/`
+3. Create `src/app/tools/[slug]/page.tsx` using the `ToolPage` template
+
+See `.cursor/rules/vidsembly-free-tools-platform.mdc` for full platform conventions.
 
 ## License
 

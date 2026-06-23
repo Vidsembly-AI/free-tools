@@ -1,21 +1,16 @@
-import type { Metadata } from "next";
-import { ToolPageLayout } from "@/components/tools/ToolPageLayout";
+import { ToolPage } from "@/components/tools/ToolPage";
 import { WavToMp3Converter } from "@/components/tools/WavToMp3Converter";
+import { generateToolMetadata } from "@/lib/tools/seo";
+import { getRequiredToolConfig } from "@/lib/tools/get-required-tool-config";
 
-export const metadata: Metadata = {
-  title: "WAV to MP3 Converter | Vidsembly Free Tools",
-  description:
-    "Convert WAV files to MP3 in your browser. Upload multiple files, convert locally, and download individually or as a ZIP.",
-};
+const tool = getRequiredToolConfig("wav-to-mp3");
+
+export const metadata = generateToolMetadata(tool);
 
 export default function WavToMp3Page() {
   return (
-    <ToolPageLayout
-      category="Audio Tools"
-      title="WAV to MP3 Converter"
-      description="Convert uncompressed WAV files to compact MP3 format. Files are processed entirely in your browser — nothing is uploaded to a server."
-    >
-      <WavToMp3Converter />
-    </ToolPageLayout>
+    <ToolPage tool={tool}>
+      <WavToMp3Converter trustPoints={tool.trustPoints} />
+    </ToolPage>
   );
 }

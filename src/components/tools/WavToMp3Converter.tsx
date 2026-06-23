@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ConversionFileList, type ConversionFileItem } from "@/components/tools/ConversionFileList";
 import { FileDropzone } from "@/components/tools/FileDropzone";
 import { StatusMessage } from "@/components/tools/StatusMessage";
+import { ToolTrustBox } from "@/components/tools/ToolTrustBox";
 import { downloadBlob, downloadZip } from "@/lib/tools/audio/downloads";
 import { isWavFile } from "@/lib/tools/audio/decode-wav";
 import { convertWavToMp3 } from "@/lib/tools/audio/wav-to-mp3";
@@ -12,7 +13,13 @@ function createFileId(): string {
   return crypto.randomUUID();
 }
 
-export function WavToMp3Converter() {
+interface WavToMp3ConverterProps {
+  trustPoints: string[];
+}
+
+export function WavToMp3Converter({ trustPoints }: WavToMp3ConverterProps) {
+  const actionsRef = useRef<HTMLDivElement>(null);
+  const shouldScrollToActions = useRef(false);
   const [files, setFiles] = useState<ConversionFileItem[]>([]);
   const [isConverting, setIsConverting] = useState(false);
   const [isZipping, setIsZipping] = useState(false);
@@ -26,6 +33,13 @@ export function WavToMp3Converter() {
 
   const hasPendingFiles = files.some((item) => item.status === "pending");
   const hasFiles = files.length > 0;
+
+  useEffect(() => {
+    if (!shouldScrollToActions.current || !actionsRef.current) return;
+
+    shouldScrollToActions.current = false;
+    actionsRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [files]);
 
   const addFiles = useCallback((incoming: File[]) => {
     const wavFiles = incoming.filter(isWavFile);
@@ -46,6 +60,10 @@ export function WavToMp3Converter() {
           file,
           status: "pending" as const,
         }));
+
+      if (newItems.length > 0) {
+        shouldScrollToActions.current = true;
+      }
 
       return [...current, ...newItems];
     });
@@ -179,6 +197,8 @@ export function WavToMp3Converter() {
         hint="Supports multiple files · Processed locally in your browser"
       />
 
+      <ToolTrustBox items={trustPoints} />
+
       {statusMessage && <StatusMessage variant={statusVariant} message={statusMessage} />}
 
       <ConversionFileList
@@ -189,7 +209,10 @@ export function WavToMp3Converter() {
       />
 
       {hasFiles && (
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <div
+          ref={actionsRef}
+          className="scroll-mt-24 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+        >
           <button
             type="button"
             onClick={convertAll}

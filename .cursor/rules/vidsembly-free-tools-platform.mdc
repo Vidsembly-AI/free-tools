@@ -1,0 +1,61 @@
+---
+description: Vidsembly Free Tools platform architecture, design, and tool development rules
+alwaysApply: true
+---
+
+# Vidsembly Free Tools Platform
+
+This repo powers **tools.vidsembly.com**. Treat it as a scalable free-tool platform, not a collection of one-off pages.
+
+## Tool Architecture
+
+- Register every tool in `src/lib/tools/tool-data.ts` before building a page.
+- Tool pages must use shared components — never hand-roll SEO, FAQ, CTA, or related-tool sections.
+- Use `ToolPage` as the page template; pass only the tool-specific converter UI as `children`.
+
+### Adding a new tool
+
+1. Add a `ToolConfig` entry to `toolConfigs` in `tool-data.ts` (SEO, FAQs, info sections, related tools, trust points).
+2. Build the converter as a client component under `components/tools/`.
+3. Create `app/tools/[slug]/page.tsx`:
+
+```tsx
+import { ToolPage } from "@/components/tools/ToolPage";
+import { MyToolConverter } from "@/components/tools/MyToolConverter";
+import { generateToolMetadata } from "@/lib/tools/seo";
+import { getRequiredToolConfig } from "@/lib/tools/get-required-tool-config";
+
+const tool = getRequiredToolConfig("my-tool-slug");
+export const metadata = generateToolMetadata(tool);
+
+export default function MyToolPage() {
+  return (
+    <ToolPage tool={tool}>
+      <MyToolConverter trustPoints={tool.trustPoints} />
+    </ToolPage>
+  );
+}
+```
+
+### Automatic per-tool features (via `ToolPage` + `ToolSeoContent`)
+
+- SEO, Open Graph, and Twitter metadata (`generateToolMetadata`)
+- FAQ section (`ToolFaq`)
+- Informational content (`ToolInfoSections`)
+- Related tools (`RelatedTools`)
+- Vidsembly CTA (`VidsemblyCta`)
+- JSON-LD structured data (`ToolJsonLd` — SoftwareApplication + FAQPage)
+
+## Design Rules
+
+- Keep the existing dark Vidsembly design system (`globals.css` tokens, Jost font, blue/purple accents).
+- Reuse existing components (`ToolPageLayout`, `FileDropzone`, `ToolTrustBox`, `ToolCard`, etc.).
+- Do not redesign existing pages unless explicitly requested.
+- Do not introduce new color schemes, popups, banners, or overlays.
+
+## Code Rules
+
+- Prefer reusable components over page-specific logic.
+- Put conversion/helper logic in `lib/tools/[category]/` (e.g. `lib/tools/audio/`).
+- Avoid duplicating FAQ, SEO, CTA, or related-tool logic across pages.
+- Mark tools as `available: true` in `tool-data.ts` to enable homepage links.
