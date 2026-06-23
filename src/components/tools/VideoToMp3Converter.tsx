@@ -197,7 +197,7 @@ export function VideoToMp3Converter({ trustPoints }: VideoToMp3ConverterProps) {
         disabled={isConverting}
         onFilesSelected={addFiles}
         label="Drop video files here"
-        hint="Supports MP4, WebM, MOV, and more · Processed locally in your browser"
+        hint="Bulk upload supported · Export as MP3 or ZIP · MP4, WebM, MOV, and more"
       />
 
       <ToolTrustBox items={trustPoints} />

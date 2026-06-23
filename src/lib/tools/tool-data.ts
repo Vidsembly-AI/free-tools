@@ -48,17 +48,17 @@ const wavToMp3Config: ToolConfig = {
   shortDescription: "Convert uncompressed WAV files to compact MP3 format.",
   seoTitle: "Free WAV to MP3 Converter | Vidsembly",
   seoDescription:
-    "Convert WAV files to MP3 online for free. No sign-up required. Files are processed locally in your browser.",
+    "Convert WAV files to MP3 online for free. Bulk upload multiple files and export individually or as a ZIP. No sign-up required. Processed locally in your browser.",
   badge: "Free",
   route: "/tools/wav-to-mp3",
   available: true,
   pageDescription:
-    "Convert uncompressed WAV files to compact MP3 format. Files are processed entirely in your browser — nothing is uploaded to a server.",
+    "Convert uncompressed WAV files to compact MP3 format. Upload multiple files at once and export individually or as a ZIP — all processed in your browser, nothing uploaded to a server.",
   trustPoints: [
     "Free to use",
     "No account required",
     "Files stay in your browser",
-    "Supports batch conversion",
+    "Bulk upload & ZIP export",
   ],
   faqs: [
     {
@@ -117,6 +117,12 @@ const wavToMp3Config: ToolConfig = {
         "Yes. This converter runs entirely in your browser, so your files are not transmitted to Vidsembly or any third-party server. That makes it a good option when you are working with sensitive recordings, client assets, or internal training material.",
       ],
     },
+    {
+      title: "Can I convert and export files in bulk?",
+      paragraphs: [
+        "Yes. Drop multiple WAV files into the uploader, convert them in one session, then download each MP3 separately or use Download All to export everything as a single ZIP file.",
+      ],
+    },
   ],
   relatedTools: [
     {
@@ -150,17 +156,17 @@ const videoToMp3Config: ToolConfig = {
   shortDescription: "Extract audio tracks from video files as MP3 downloads.",
   seoTitle: "Free Video to MP3 Converter | Vidsembly",
   seoDescription:
-    "Extract audio from video files and convert to MP3 online for free. No sign-up required. Files are processed locally in your browser.",
+    "Extract audio from video files and convert to MP3 online for free. Bulk upload multiple videos and export individually or as a ZIP. No sign-up required. Processed locally in your browser.",
   badge: "Free",
   route: "/tools/video-to-mp3",
   available: true,
   pageDescription:
-    "Extract audio from video files and save as MP3. Supports MP4, WebM, MOV, and more. Files are processed entirely in your browser — nothing is uploaded to a server.",
+    "Extract audio from video files and save as MP3. Upload multiple videos at once and export individually or as a ZIP — all processed in your browser, nothing uploaded to a server.",
   trustPoints: [
     "Free to use",
     "No account required",
     "Files stay in your browser",
-    "Supports batch conversion",
+    "Bulk upload & ZIP export",
   ],
   faqs: [
     {
@@ -217,6 +223,12 @@ const videoToMp3Config: ToolConfig = {
       title: "Is browser-based video conversion private?",
       paragraphs: [
         "Yes. This converter runs entirely in your browser, so your files are not transmitted to Vidsembly or any third-party server. That makes it suitable for internal recordings, client deliverables, and other sensitive content.",
+      ],
+    },
+    {
+      title: "Can I extract and export audio in bulk?",
+      paragraphs: [
+        "Yes. Add multiple video files at once, convert them in one session, then download each MP3 individually or use Download All to export everything as a single ZIP file.",
       ],
     },
   ],

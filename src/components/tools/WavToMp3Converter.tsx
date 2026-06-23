@@ -194,7 +194,7 @@ export function WavToMp3Converter({ trustPoints }: WavToMp3ConverterProps) {
         disabled={isConverting}
         onFilesSelected={addFiles}
         label="Drop WAV files here"
-        hint="Supports multiple files · Processed locally in your browser"
+        hint="Bulk upload supported · Export as MP3 or ZIP · Processed locally in your browser"
       />
 
       <ToolTrustBox items={trustPoints} />
