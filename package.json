@@ -12,6 +12,7 @@
     "@breezystack/lamejs": "^1.2.7",
     "@ffmpeg/ffmpeg": "^0.12.15",
     "@ffmpeg/util": "^0.12.2",
+    "@vercel/analytics": "^2.0.1",
     "jszip": "^3.10.1",
     "next": "^15.3.4",
     "react": "^19.1.0",
