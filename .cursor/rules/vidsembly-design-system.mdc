@@ -1,0 +1,116 @@
+---
+description: Vidsembly brand design system — shared across vidsembly.com and tools.vidsembly.com
+alwaysApply: true
+---
+
+# Vidsembly Design System
+
+Use this rule for **any Vidsembly web property** (marketing site, free tools, insights/blog). Match the live reference: **https://tools.vidsembly.com**
+
+Reference implementation repo: `Vidsembly-AI/free-tools` (especially `src/app/globals.css`, `Header`, `Footer`, `Hero`, `ToolCard`, `VidsemblyCta`).
+
+## Brand
+
+- **Voice:** Professional SaaS, creator-friendly, not salesy
+- **Theme:** Dark only — do not introduce light mode or new color palettes unless explicitly requested
+- **Logo:** `https://images.squarespace-cdn.com/content/v1/66993e7ac009314a8eed947d/edbc980b-1a65-4d5b-b15e-23d235e8cb39/Main+Vidsembly+Logo+Gradient+%2B+White+PNG.png?format=1500w`
+- **Font:** Jost (Google Font), applied site-wide via `--font-jost`
+
+## Color Tokens
+
+Define in Tailwind `@theme` or CSS variables — use these exact values:
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `background` | `#0a0a0f` | Page background |
+| `surface` | `#12121a` | Cards, sections |
+| `surface-elevated` | `#1a1a26` | Inputs, buttons, elevated panels |
+| `border` | `#2a2a3d` | Card and section borders |
+| `border-subtle` | `#1f1f2e` | Header/footer dividers |
+| `foreground` | `#f4f4f8` | Primary text |
+| `muted` | `#9494a8` | Secondary text, descriptions |
+| `accent-blue` | `#3b82f6` | Links, category labels, hover accents |
+| `accent-purple` | `#8b5cf6` | Gradient end, badges, hover accents |
+| `accent-blue-soft` | `#1e3a5f` | Soft blue backgrounds |
+| `accent-purple-soft` | `#2d1f4e` | Soft purple backgrounds (badges) |
+
+## Utility Classes
+
+Include in global CSS:
+
+- `.gradient-text` — blue → purple gradient on headline emphasis words
+- `.hero-glow` — radial blue/purple glow behind hero sections
+- `.card-glow` — subtle gradient overlay on card hover
+
+## Layout
+
+- **Max widths:** `max-w-7xl` for page sections, `max-w-4xl` for tool/article content
+- **Horizontal padding:** `px-4 sm:px-6 lg:px-8`
+- **Section spacing:** `py-10 sm:py-14` (content), `py-20 sm:py-28` (hero)
+- **Responsive:** Mobile-first; nav collapses gracefully on small screens
+
+## Components
+
+### Header
+- Sticky, `border-b border-border-subtle`, `bg-background/80 backdrop-blur-xl`
+- Logo left; nav links right
+- Nav link style: `text-sm font-medium text-muted`, hover → `bg-surface-elevated text-foreground`, `rounded-lg px-3 py-2`
+
+### Hero
+- Use `hero-glow` + optional subtle grid overlay (see `Hero.tsx` in free-tools)
+- Headline: `text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight`
+- Accent words: wrap in `<span className="gradient-text">`
+- Subtitle: `text-lg sm:text-xl text-muted leading-relaxed`
+
+### Buttons
+- **Primary:** `rounded-xl bg-gradient-to-r from-accent-blue to-accent-purple px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-purple/25 hover:brightness-110`
+- **Secondary:** `rounded-xl border border-border bg-surface-elevated px-6 py-3 text-sm font-semibold text-foreground hover:border-accent-blue/50`
+
+### Cards
+- `rounded-2xl border border-border bg-surface p-5 sm:p-6`
+- Hover: `hover:border-accent-blue/40 hover:shadow-lg hover:shadow-accent-blue/5` (or purple variant for insights)
+- Optional `card-glow` overlay on hover
+
+### Badges
+- Default: `rounded-full border border-border bg-surface-elevated text-xs text-muted`
+- Accent ("Coming Soon", category): `border-accent-purple/30 bg-accent-purple-soft text-accent-purple`
+
+### CTA block
+- Centered card: `rounded-2xl border border-border bg-surface px-6 py-10 text-center`
+- Heading + short description + primary button linking to `https://www.vidsembly.com`
+- Not intrusive — no popups, banners, or overlays
+
+### Footer
+- `border-t border-border-subtle bg-surface`, centered or split layout
+- "Powered by Vidsembly" + link to vidsembly.com
+- Include cross-links where relevant (e.g. Insights, Free Tools)
+
+## Typography Scale
+
+- Page title (h1): `text-3xl sm:text-4xl font-bold tracking-tight`
+- Section title (h2): `text-xl sm:text-2xl font-semibold`
+- Card title (h3): `text-lg font-semibold` or `text-sm font-semibold`
+- Body: `text-sm sm:text-base leading-relaxed text-muted`
+- Category label: `text-xs sm:text-sm font-medium uppercase tracking-wider text-accent-blue` or `text-accent-purple`
+
+## Cross-Site Links
+
+| From | Link to |
+|------|---------|
+| vidsembly.com | https://tools.vidsembly.com (Free Tools) |
+| tools.vidsembly.com | https://www.vidsembly.com (product CTA) |
+| Either | `/insights` on tools site when referencing guides |
+
+## Do Not
+
+- Introduce new color schemes, fonts, or light themes
+- Add popups, cookie banners, chat widgets, or overlay modals unless explicitly requested
+- Redesign existing Vidsembly pages unless the task asks for it
+- Use generic Bootstrap/Material aesthetics — stay on-brand with dark + blue/purple
+
+## When Building a New Vidsembly Site
+
+1. Copy `globals.css` tokens from free-tools (or install shared tokens later)
+2. Set up Jost via `next/font/google`
+3. Reuse Header/Footer/CTA patterns above — adapt nav links per site
+4. Compare side-by-side with https://tools.vidsembly.com before finishing
