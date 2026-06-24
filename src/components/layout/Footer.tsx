@@ -15,14 +15,22 @@ export function Footer() {
             Vidsembly
           </Link>
         </p>
-        <Link
-          href="https://vidsembly.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-muted transition-colors hover:text-accent-purple"
-        >
-          vidsembly.com
-        </Link>
+        <nav className="flex items-center gap-6">
+          <Link
+            href="/insights"
+            className="text-sm text-muted transition-colors hover:text-accent-purple"
+          >
+            Insights
+          </Link>
+          <Link
+            href="https://vidsembly.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted transition-colors hover:text-accent-purple"
+          >
+            vidsembly.com
+          </Link>
+        </nav>
       </div>
     </footer>
   );
