@@ -12,6 +12,11 @@ export const toolCategories: ToolCategory[] = [
     description: "Extract, trim, and merge video without installing software.",
   },
   {
+    id: "image",
+    name: "Image Tools",
+    description: "Convert, trace, and prepare images for web, print, and design workflows.",
+  },
+  {
     id: "presentation",
     name: "Presentation Tools",
     description: "Plan scripts and presentations with quick word-count utilities.",
@@ -26,6 +31,7 @@ export const toolCategories: ToolCategory[] = [
 const categoryLabels: Record<ToolCategoryId, string> = {
   audio: "Audio Tools",
   video: "Video Tools",
+  image: "Image Tools",
   presentation: "Presentation Tools",
   transcription: "Transcription Tools",
 };
@@ -102,6 +108,21 @@ export const tools: Tool[] = [
     description: "Speed up or slow down videos for tutorials, demonstrations, and time-lapse content.",
     category: "video",
     slug: "video-speed-controller",
+  },
+  {
+    id: "png-to-svg",
+    name: "PNG to SVG Converter",
+    description: "Trace PNG images into scalable SVG vector files in your browser.",
+    category: "image",
+    slug: "png-to-svg",
+    available: true,
+  },
+  {
+    id: "svg-to-png",
+    name: "SVG to PNG Converter",
+    description: "Rasterize SVG graphics into high-quality PNG images for sharing and export.",
+    category: "image",
+    slug: "svg-to-png",
   },
   {
     id: "script-length-calculator",

@@ -256,7 +256,115 @@ const videoToMp3Config: ToolConfig = {
   ],
 };
 
-export const toolConfigs: ToolConfig[] = [wavToMp3Config, videoToMp3Config];
+const pngToSvgConfig: ToolConfig = {
+  slug: "png-to-svg",
+  name: "PNG to SVG Converter",
+  category: "image",
+  categoryLabel: "Image Tools",
+  shortDescription: "Trace PNG images into scalable SVG vector files.",
+  seoTitle: "Free PNG to SVG Converter | Vidsembly",
+  seoDescription:
+    "Convert PNG images to SVG online for free. Trace logos and graphics into scalable vectors in your browser. Bulk upload and ZIP export. No sign-up required.",
+  badge: "Free",
+  route: "/tools/png-to-svg",
+  available: true,
+  pageDescription:
+    "Trace PNG images into scalable SVG vector files. Upload multiple PNGs, choose a trace quality, and export individually or as a ZIP — all processed locally in your browser.",
+  trustPoints: [
+    "Free to use",
+    "No account required",
+    "Files stay in your browser",
+    "Bulk upload & ZIP export",
+  ],
+  faqs: [
+    {
+      question: "How do I convert PNG to SVG?",
+      answer:
+        "Upload one or more PNG files, choose a trace quality setting, then click Convert to SVG. When tracing finishes, download each SVG individually or use Download All to get a ZIP archive.",
+    },
+    {
+      question: "Is this PNG to SVG converter free?",
+      answer:
+        "Yes. This tool is completely free with no account required. There are no usage limits on the number of files you can convert.",
+    },
+    {
+      question: "Are my images uploaded to a server?",
+      answer:
+        "No. Tracing runs locally in your browser using client-side image vectorization. Your PNG files never leave your device.",
+    },
+    {
+      question: "Will the SVG look exactly like my PNG?",
+      answer:
+        "PNG is a raster format and SVG is vector-based. This tool traces shapes and colors from your image to build an SVG. Photos and gradients may simplify, while logos, icons, and flat graphics usually trace well.",
+    },
+    {
+      question: "Which trace quality should I use?",
+      answer:
+        "Balanced works well for most logos and icons. Choose Detailed for complex artwork with more color variation, or Simple for flat graphics with fewer shapes.",
+    },
+    {
+      question: "Can I convert multiple PNG files at once?",
+      answer:
+        "Yes. Add several PNG files before converting. Each file is processed in sequence, and you can download the results individually or together as a ZIP file.",
+    },
+  ],
+  infoSections: [
+    {
+      title: "What is the difference between PNG and SVG?",
+      paragraphs: [
+        "PNG stores pixels in a fixed grid, which makes it ideal for photos and detailed raster artwork. SVG describes shapes, paths, and colors mathematically, so it scales to any size without losing sharpness — perfect for logos, icons, and UI graphics.",
+      ],
+    },
+    {
+      title: "Why convert PNG to SVG?",
+      paragraphs: [
+        "SVG files scale cleanly for websites, presentations, print, and app interfaces. Converting a PNG logo or icon to SVG lets you resize it freely, edit colors in design tools, and keep file sizes manageable for simple graphics.",
+      ],
+    },
+    {
+      title: "When does PNG to SVG work best?",
+      paragraphs: [
+        "Tracing works best on high-contrast logos, line art, icons, and flat illustrations with solid colors. Detailed photographs, heavy gradients, and soft shadows are harder to vectorize faithfully and may produce simplified results.",
+      ],
+    },
+    {
+      title: "Is browser-based image conversion private?",
+      paragraphs: [
+        "Yes. This converter processes files entirely in your browser, so your images are not transmitted to Vidsembly or any third-party server. That makes it suitable for brand assets, client logos, and other sensitive design files.",
+      ],
+    },
+    {
+      title: "Can I trace and export files in bulk?",
+      paragraphs: [
+        "Yes. Drop multiple PNG files into the uploader, convert them in one session, then download each SVG separately or use Download All to export everything as a single ZIP file.",
+      ],
+    },
+  ],
+  relatedTools: [
+    {
+      slug: "svg-to-png",
+      name: "SVG to PNG Converter",
+      shortDescription: "Rasterize SVG graphics into high-quality PNG images for sharing and export.",
+    },
+    {
+      slug: "video-to-gif",
+      name: "Video to GIF Converter",
+      shortDescription: "Convert short video clips into high-quality GIFs for social media and messaging.",
+    },
+    {
+      slug: "wav-to-mp3",
+      name: "WAV to MP3 Converter",
+      shortDescription: "Convert uncompressed WAV files to compact MP3 format.",
+    },
+    {
+      slug: "video-to-mp3",
+      name: "Video to MP3 Converter",
+      shortDescription: "Extract audio tracks from video files as MP3 downloads.",
+    },
+  ],
+};
+
+export const toolConfigs: ToolConfig[] = [wavToMp3Config, videoToMp3Config, pngToSvgConfig];
 
 export const toolConfigMap: Record<string, ToolConfig> = Object.fromEntries(
   toolConfigs.map((tool) => [tool.slug, tool]),

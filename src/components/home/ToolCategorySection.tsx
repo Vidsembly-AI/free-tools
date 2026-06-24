@@ -9,6 +9,7 @@ interface ToolCategorySectionProps {
 const categoryAccent: Record<ToolCategory["id"], string> = {
   audio: "from-accent-blue to-cyan-400",
   video: "from-accent-purple to-pink-500",
+  image: "from-emerald-400 to-accent-blue",
   presentation: "from-violet-500 to-accent-purple",
   transcription: "from-blue-400 to-accent-blue",
 };

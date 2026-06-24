@@ -1,4 +1,9 @@
-export type ToolCategoryId = "audio" | "video" | "presentation" | "transcription";
+export type ToolCategoryId =
+  | "audio"
+  | "video"
+  | "image"
+  | "presentation"
+  | "transcription";
 
 export interface Tool {
   id: string;
